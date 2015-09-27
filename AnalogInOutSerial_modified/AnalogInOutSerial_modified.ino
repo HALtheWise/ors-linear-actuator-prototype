@@ -25,8 +25,8 @@ int sensorValue1 = 0;        // value read from the pot
 int sensorValue2 = 0;        // value read from the pot
 
 
-int lowThresh = 580;
-int highThresh = 620;
+int lowThresh = 780;
+int highThresh = 850;
 
 boolean isWhite = false;
 
