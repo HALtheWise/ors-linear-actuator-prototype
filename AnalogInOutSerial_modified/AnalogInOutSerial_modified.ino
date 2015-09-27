@@ -24,6 +24,14 @@ const int analogInPin2 = A1;  // Analog input pin that the potentiometer is atta
 int sensorValue1 = 0;        // value read from the pot
 int sensorValue2 = 0;        // value read from the pot
 
+
+int lowThresh = 580;
+int highThresh = 620;
+
+boolean isWhite = false;
+
+int count = 0;
+
 void setup() {
   // initialize serial communications at 9600 bps:
   Serial.begin(9600); 
@@ -34,13 +42,29 @@ void loop() {
   sensorValue1 = analogRead(analogInPin1);  
   sensorValue2 = analogRead(analogInPin2);              
 
+  if (isWhite && (sensorValue2<lowThresh)){
+    Serial.println("Saw black");
+    isWhite = false;
+    count++;
+    delay(50);
+  }
+
+  if (!isWhite && (sensorValue2>highThresh)){
+    Serial.println("Saw white");
+    isWhite = true;
+    count++;
+    delay(50);
+  }
+
   // print the results to the serial monitor:
+  Serial.print("count = " );                       
+  Serial.print(count);      
   Serial.print("sensor1 = " );                       
   Serial.print(sensorValue1);      
   Serial.print("\t sensor2 = ");      
   Serial.println(sensorValue2);   
 
-  // wait 2 milliseconds before the next loop
+  // wait * milliseconds before the next loop
   // for the analog-to-digital converter to settle
   // after the last reading:
   delay(2);                     
