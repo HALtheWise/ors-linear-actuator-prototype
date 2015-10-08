@@ -48,20 +48,18 @@ void loop() {
     Serial.println("Saw black");
     isWhite = false;
     count++;
-    delay(50);
   }
 
   if (!isWhite && (sensorValue2>highThresh)){
     Serial.println("Saw white");
     isWhite = true;
     count++;
-    delay(50);
   }
 
   // print the results to the serial monitor:
   Serial.print("count = " );                       
   Serial.print(count);      
-  Serial.print("sensor1 = " );                       
+  Serial.print("\t sensor1 = " );                       
   Serial.print(sensorValue1);      
   Serial.print("\t sensor2 = ");      
   Serial.println(sensorValue2);   
