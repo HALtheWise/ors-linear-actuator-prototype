@@ -24,9 +24,11 @@ const int analogInPin2 = A1;  // Analog input pin that the potentiometer is atta
 int sensorValue1 = 0;        // value read from the pot
 int sensorValue2 = 0;        // value read from the pot
 
+#define ABS_MAX 270
+#define ABS_MIN 185
 
-int lowThresh = 300;
-int highThresh = 400;
+int lowThresh = (ABS_MAX-ABS_MIN)*1/3+ABS_MIN;
+int highThresh = (ABS_MAX-ABS_MIN)*2/3+ABS_MIN;
 
 boolean isWhite = false;
 
